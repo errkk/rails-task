@@ -4,11 +4,12 @@ class PlanController < ApplicationController
     plans = GetPlans.new
 
     if plans.success?
-      available = plans.available(1)
+    available = plans.available(24)
       render json: available.to_json
     end
   end
 
   def subscribe
   end
+
 end
