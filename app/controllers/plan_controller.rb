@@ -4,7 +4,7 @@ class PlanController < ApplicationController
     plans = GetPlans.new
 
     if plans.success?
-    available = plans.available(24)
+      available = plans.available(12)
       render json: available.to_json
     end
   end
