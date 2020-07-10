@@ -4,8 +4,10 @@ class PlanController < ApplicationController
     plans = GetPlans.new
 
     if plans.success?
-      available = plans.available(1)
+      available = plans.available(12)
       render json: available.to_json
+    else
+      head :unprocessable_entity
     end
   end
 

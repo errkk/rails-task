@@ -17,11 +17,10 @@ class GetPlans
   # @param min_term [Integer]
   # @return [Array<Hash>]
   def available(min_term)
-    # TODO do something if the API response is unsuccess
     return unless @api.success?
 
     # Filter plans from the api that are available for
     # at least min term months
-    @api.parsed_response.filter { |identifier, plan| plan["min_term"] <= min_term }
+    @api.parsed_response.select { |identifier, plan| plan["min_term"] <= min_term }
   end
 end
