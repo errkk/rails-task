@@ -42,9 +42,17 @@ RSpec.describe "Plans API", type: :request do
     context "telco api call is unsuccess" do
       let(:success) { false }
 
-      it "renders available plans in JSON" do
+    it "returns an unprocessible_entity code" do
         perform_request
         expect(response).to have_http_status(422)
+      end
+    end
+
+    context "no min term specified" do
+      let(:min_term) { nil }
+      it "responds with a bad request status" do
+        perform_request
+        expect(response).to have_http_status(400)
       end
     end
   end
