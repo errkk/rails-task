@@ -1,10 +1,10 @@
 class GetPlans
   # /plans
   # {
-  #   big: { "price": 1000, "currency": "GBP" , "min_term": 12},
-  #   medium: { "price": 500, "currency": "GBP" , "min_term": 1},
-  #   small: { "price": 250, "currency": "GBP" , "min_term": 12},
-  #   tiny:  { "price": 125, "currency": "GBP", "min_term": 24 }
+  #   "big" =>{ "price" => 1000, "currency" => "GBP" , "min_term" => 12},
+  #   "medium" => { "price" => 500, "currency" => "GBP" , "min_term" => 1},
+  #   "small" => { "price" => 250, "currency" => "GBP" , "min_term" => 12},
+  #   "tiny" => { "price" => 125, "currency" => "GBP", "min_term" => 24 }
   # }
 
   delegate :success?, :code, to: :@api
@@ -22,6 +22,6 @@ class GetPlans
 
     # Filter plans from the api that are available for
     # at least min term months
-    @api.parsed_response.filter { |identifier, plan| plan["min_term"] >= min_term }
+    @api.parsed_response.filter { |identifier, plan| plan["min_term"] <= min_term }
   end
 end

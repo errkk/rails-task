@@ -15,17 +15,17 @@ module Telco
     # Uncomment to override
     #def parsed_response
       #{
-        #big: { "price": 1000, "currency": "GBP" , "min_term": 12},
-        #medium: { "price": 500, "currency": "GBP" , "min_term": 1},
-        #small: { "price": 250, "currency": "GBP" , "min_term": 12},
-        #tiny:  { "price": 125, "currency": "GBP", "min_term": 24 }
+        #"big" =>{ "price" => 1000, "currency" => "GBP" , "min_term" => 12},
+        #"medium" => { "price" => 500, "currency" => "GBP" , "min_term" => 1},
+        #"small" => { "price" => 250, "currency" => "GBP" , "min_term" => 12},
+        #"tiny" => { "price" => 125, "currency" => "GBP", "min_term" => 24 }
       #}
     #end
 
     private
       def headers
         {
-          "x-auth-token" => "afb4f44e-fc74-47d8-adae-d778debee630"
+          "x-auth-token" => "test api key"
         }
       end
   end
