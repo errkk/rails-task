@@ -25,7 +25,7 @@ module Telco
     private
       def headers
         {
-          "x-auth-token" => "afb4f44e-fc74-47d8-adae-d778debee630"
+          "x-auth-token" => "test api key"
         }
       end
   end
