@@ -1,12 +1,12 @@
 class PlanController < ApplicationController
-  PLANS = {
-    big: { price: 1000, currency: "GBP" },
-    medium: { price: 500, currency: "GBP" },
-    small: { price: 250, currency: "GBP" },
-    tiny:  { price: 125, currency: "GBP" }
-  }
+
   def index
-    render json: PLANS.to_json
+    plans = GetPlans.new
+
+    if plans.success?
+      available = plans.available(12)
+      render json: available.to_json
+    end
   end
 
   def subscribe
