@@ -13,10 +13,6 @@ RSpec.describe "Plans API", type: :request do
 
   let(:get_plans) { instance_double(GetPlans, available: available_plans, success?: success) }
 
-  let(:perform_request) do
-    get "/plan/index", params: { min_term: min_term }
-  end
-
   before do
     allow(GetPlans).to receive(:new)
         .and_return(get_plans)
@@ -24,18 +20,21 @@ RSpec.describe "Plans API", type: :request do
 
   describe "GET /plan/index" do
     it "returns a 200 response" do
-      perform_request
+      get "/plan/index", params: { min_term: min_term }
+
       expect(response).to have_http_status(200)
     end
 
-    it "calls GetPlans with the minimum term" do
-      perform_request
+    it "calls GetPlans with the minimum term query parameter" do
+      get "/plan/index", params: { min_term: min_term }
+
       expect(get_plans).to have_received(:available)
           .with(min_term)
     end
 
     it "renders available plans in JSON" do
-      perform_request
+      get "/plan/index", params: { min_term: min_term }
+
       expect(response.parsed_body.keys).to eq(available_plans.keys)
     end
 
@@ -43,7 +42,8 @@ RSpec.describe "Plans API", type: :request do
       let(:success) { false }
 
     it "returns an unprocessible_entity code" do
-        perform_request
+        get "/plan/index", params: { min_term: min_term }
+
         expect(response).to have_http_status(422)
       end
     end
@@ -51,7 +51,8 @@ RSpec.describe "Plans API", type: :request do
     context "no min term specified" do
       let(:min_term) { nil }
       it "responds with a bad request status" do
-        perform_request
+        get "/plan/index", params: { min_term: min_term }
+
         expect(response).to have_http_status(400)
       end
     end

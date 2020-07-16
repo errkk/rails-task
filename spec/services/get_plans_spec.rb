@@ -22,7 +22,7 @@ describe GetPlans do
   end
 
   describe "#available" do
-    it "filters by min_term" do
+    it "filters only plans available for below or including a minimum term" do
       expect(subject.available(12)).to eq(
         "big" =>{ "price" => 1000, "currency" => "GBP" , "min_term" => 12},
         "medium" => { "price" => 500, "currency" => "GBP" , "min_term" => 1},

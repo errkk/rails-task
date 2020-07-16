@@ -8,19 +8,11 @@ module Telco
 
     delegate :success?, :code, :parsed_response, to: :@response
 
+    # Fetches the requests to instance variable @response
+    # Note: self.success?, self.code and self.parsed_response are deletegate to @response
     def get_plans
       @response = self.class.get(PLANS, headers: headers)
     end
-
-    # Uncomment to override
-    #def parsed_response
-      #{
-        #"big" =>{ "price" => 1000, "currency" => "GBP" , "min_term" => 12},
-        #"medium" => { "price" => 500, "currency" => "GBP" , "min_term" => 1},
-        #"small" => { "price" => 250, "currency" => "GBP" , "min_term" => 12},
-        #"tiny" => { "price" => 125, "currency" => "GBP", "min_term" => 24 }
-      #}
-    #end
 
     private
       def headers
