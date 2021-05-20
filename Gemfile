@@ -5,7 +5,7 @@ ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 gem 'httparty'
 
 group :development, :test do
